@@ -2,7 +2,12 @@ var app = new Vue({
     el: "#app",
     data: {
       producers: [{name:"Rusal"},{name:"RioTinto"},{name:"EGA"}],
-      newproducer: ""
+      newproducer: "test"
+    },
+    methods: {
+      log: function() {
+        console.log(this.newproducer)
+      }
     }
 
     // <td><input type="checkbox" v-model="producer.tobedelisted"></td>
