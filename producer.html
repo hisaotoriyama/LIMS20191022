@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="./css/producer.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app" class="container-fluid">
+        <div class="row">
+          <table class="table" class="itemList">
+              <thead>
+                <tr>
+                  <th scope="col">Delete</th>
+                  <th scope="col">Producer</th>
+                  <th scope="col">Revision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="producer in producers">
+                  <td><input type="checkbox" v-model="producer.tobedelisted"></td>
+                  <td><span v-bind:class="{done: producer.tobedelisted}">{{producer.name}}</span></td>
+                  <td><input type="text" v-model:class="producer.revisedname"></td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <td><span>New Producer</span></td>
+                  <td><input type="text" class="form-control" v-model="newproducer"></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+
+
+      <div class="row">
+          <button type="button" class="btn btn-outline-primary" v-on:click="readproducers">更新</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="addproducer">追加</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="deleteproducer">削除</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="revisedproducer">修正</button>
+          
+      </div>
+      <pre>{{$data}}</pre>
+            
+      <!-- <pre>{{$data.revisedTodos}}</pre> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <!-- main.jsに移る前に、js-cookiesを読み込んでおかないと、main.js読み取りに行った際に理解ができなくなるため。 -->
+    <script src="./producer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  </body>
+
+</html>
