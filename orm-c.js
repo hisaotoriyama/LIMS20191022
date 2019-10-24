@@ -1,15 +1,11 @@
 let db = require('./models/index')
  
-db.status.create({
-    name: 'InWarehouse'
+db.producer.create({
+    name: 'Rio Tinto'
   })
-  db.holder.create({
-     name: 'Enkei'
- })
- db.unit.create({
-     producer: 1,
-     holder:2,
-     status:2,
-     producerid: 32,
-     producerspecification: "within Speficiation"
- })
+db.producer.create({
+    name: 'EGA'
+  })
+db.producer.create({
+    name: 'Boyne'
+  })  

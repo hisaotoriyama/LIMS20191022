@@ -5,9 +5,36 @@ var app = new Vue({
       newproducer: "test"
     },
     methods: {
-      log: function() {
-        console.log(this.newproducer)
-      }
+      readproducer: function() {
+        const headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        };
+        const d = {
+           headers: headers,
+           method: "GET"
+        };
+        var self = this;
+        fetch('/producers', d).then((d)=>{
+         return new Promise((res, rej) => {
+           d.json().then((j) => {
+             self.producers = j;
+             res(); // resolve
+             console.log("PROCESSED")
+           })
+         })
+       })
+      },
+      addproducer: function() {
+        console.log(this.producers)
+      },
+      deleteproducer: function() {
+        console.log(this.producers)
+      },
+      reviseproducer: function() {
+        console.log(this.producers)
+      },
+
     }
 
     // <td><input type="checkbox" v-model="producer.tobedelisted"></td>
