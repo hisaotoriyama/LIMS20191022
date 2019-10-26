@@ -19,7 +19,16 @@ module.exports = {
         res.send("new forum");
     },
     create: (req, res) => {
-        res.send("create forum");
+        let data = {
+        name:req.body.name
+        }
+        db.vuetodotable.create(data).then((p)=>{
+          res.json({
+              id: p.id,
+              name: p.name
+        })
+        })
+        console.log("processed")
     },
     show: (req, res) => {
         res.send("show forum " + req.params.forum);

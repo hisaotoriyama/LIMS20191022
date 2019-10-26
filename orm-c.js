@@ -1,11 +1,11 @@
 let db = require('./models/index')
  
 db.producer.create({
-    name: 'Rio Tinto'
+    name: 'Albras'
   })
 db.producer.create({
-    name: 'EGA'
+    name: 'Asahan'
   })
 db.producer.create({
-    name: 'Boyne'
+    name: 'Alcoa'
   })  

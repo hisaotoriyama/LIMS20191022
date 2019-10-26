@@ -1,8 +1,8 @@
 var app = new Vue({
     el: "#app",
     data: {
-      producers: [{name:"Rusal"},{name:"RioTinto"},{name:"EGA"}],
-      newproducer: "test"
+      producers: "",
+      newproducer: ""
     },
     methods: {
       readproducer: function() {
@@ -20,13 +20,34 @@ var app = new Vue({
            d.json().then((j) => {
              self.producers = j;
              res(); // resolve
-             console.log("PROCESSED")
            })
          })
        })
       },
       addproducer: function() {
-        console.log(this.producers)
+        if (this.newproducer == "") return;
+        const data = {
+          "name": this.newproducer
+        };
+        const headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        };
+        const d = {
+        headers: headers,
+        method: "POST",
+        body: JSON.stringify(data) 
+        };
+        var self = this;
+        fetch('/producers', d).then((d)=>{
+         return new Promise((res, rej) => {
+           d.json().then((j) => {
+             self.producers = j;
+             res(); // resolve
+           })
+         })
+       })
+       console.log("Processed by producer.js")
       },
       deleteproducer: function() {
         console.log(this.producers)
